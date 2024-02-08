@@ -1,0 +1,10 @@
+; Shift + Z hotkey to cut and paste file into specific destination using the PowerShell script in a specific location.
++Z::
+    Send, ^c
+    Run PowerShell.exe -ExecutionPolicy Bypass -File "DRIVELETTER:\Add\Destination\Here"
+return
+
+; Escape key handler to stop the autohotkey script.
+Esc::
+    ExitApp
+return

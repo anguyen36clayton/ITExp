@@ -1,0 +1,10 @@
+# Get the selected items in Explorer
+$selectedItems = Get-Clipboard -Format FileDropList
+
+# Specify the destination folder on Drive D
+$destinationFolder = "DRIVELETTER:\ADD\DESTINATION\HERE"
+
+# Move each selected item to the destination folder
+foreach ($item in $selectedItems) {
+    Move-Item -Path $item -Destination $destinationFolder -Force
+}
