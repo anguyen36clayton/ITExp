@@ -1,0 +1,1 @@
+**These shell scripts are mainly ran on bash.**
