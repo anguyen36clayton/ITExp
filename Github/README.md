@@ -12,3 +12,6 @@ git clone HTTPS, where HTTPS is the link of the repository.
 $git add . OR $git add file.extension #Stage item/items 
 $git commit -m "Add comment here"
 $git push
+
+**Files**
+1. cd into a directory then push and pull, and keep command prompt to remain opened after executing commands.
