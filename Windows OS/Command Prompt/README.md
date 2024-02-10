@@ -7,7 +7,8 @@
 - $echo "This is some Text" > FileName.txt
 - $Type in the filename with its extension to open it
 - $ping: Check connectivity from one network to another
-- $systeminfo OS name and version and more
+- $systeminfo: OS name and version and more
+- /k: Keeps command prompt opened after executing scripts from .bat file
 
 add later:
 chkdsk
