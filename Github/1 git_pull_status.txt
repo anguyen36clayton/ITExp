@@ -1,0 +1,14 @@
+@echo off
+set "repo_path=DRIVE:\Directory\to\Path"
+
+cd /d "%repo_path%" || (
+    echo Directory not found: "%repo_path%"
+    pause
+    exit /b 1
+)
+
+echo Pulling changes into REPOSITORY NAME...
+git pull
+git status
+
+cmd /k
