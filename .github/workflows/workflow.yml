@@ -1,4 +1,4 @@
-name: Update Workflow Diagram
+name: Testing Workflow
 
 on:
   push:
@@ -6,17 +6,12 @@ on:
       - main
 
 jobs:
-  update:
+  build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Install dependencies
-        run: npm install -g @mermaid-js/mermaid-cli
-
-      - name: Generate Workflow Diagrams
-        run: |
-          for file in .github/workflows/*.yml; do
-            npx mmdc -i "$file" -o "${file%.yml}.svg"
-          done
+      - name: Print Hello
+        run: echo "Hello, World!"
