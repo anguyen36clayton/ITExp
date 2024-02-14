@@ -2,10 +2,11 @@ Github Commands:
 
 **Legend**
 $ - denotes a command
+# - denotes a comment
 
 **How to Clone into PC**
 - Open the repository, click on <> Code, then copy the link in HTTPS.
-git clone HTTPS, where HTTPS is the link of the repository.
+$git clone HTTPS #HTTPS is the link of the repository.
 
 **Add item/items to github**
 
