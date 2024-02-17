@@ -21,6 +21,7 @@ jobs:
     - name: Generate flowchart
       run: |
         git log --pretty=format:'%h %ad | %s%d [%an]' --date=short --all | \
+        sed 's/[^0-9A-Za-z]/ /g' | \
         gawk '{$1=$1; print | "dot -Tpng"}' > commit-flowchart.png
 
     - name: Upload flowchart as artifact
