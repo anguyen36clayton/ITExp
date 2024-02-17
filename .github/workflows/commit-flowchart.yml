@@ -1,12 +1,10 @@
-name: Commit Flowchart
+name: Generate Commit Flowchart
 
 on:
   push:
-    branches:
-      - main # Replace 'main' with the name of your default branch
 
 jobs:
-  build-flowchart:
+  generate-flowchart:
     runs-on: ubuntu-latest
 
     steps:
@@ -19,7 +17,14 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install -y graphviz
+
     - name: Generate flowchart
       run: |
         git log --pretty=format:'%h %ad | %s%d [%an]' --date=short --all | \
-        gawk '{$1=$1; print | "dot -Tpng"}' > commit-flowchart.
+        gawk '{$1=$1; print | "dot -Tpng"}' > commit-flowchart.png
+
+    - name: Upload flowchart as artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: commit-flowchart
+        path: commit-flowchart.png
