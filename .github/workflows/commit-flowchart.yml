@@ -1,0 +1,26 @@
+name: Commit Flowchart
+
+on:
+  push:
+    branches:
+      - main # Replace 'main' with the name of your default branch
+
+jobs:
+  build-flowchart:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    - name: Install required dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y graphviz
+
+    - name: Generate flowchart
+      run: |
+        git log --pretty=format:'%h %ad | %s%d [%an]' --date=short --all | \
+        gawk '{$1=$1; print | "dot -Tpng"}' > commit-flowchart.
