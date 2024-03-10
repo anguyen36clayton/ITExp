@@ -4,7 +4,7 @@ from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.enums import TA_CENTER
 import subprocess
 
-def generate_resume_files(name, email, phone, skills, experience, education, pdf_filename, odt_filename):
+def generate_resume_files(name, email, phone, skills, experience, education, achievements, pdf_filename, odt_filename):
     # PDF generation
     pdf_doc = SimpleDocTemplate(pdf_filename, pagesize=letter)
     pdf_elements = []
@@ -43,6 +43,10 @@ def generate_resume_files(name, email, phone, skills, experience, education, pdf
     for edu in education:
         pdf_elements.append(Paragraph(edu, pdf_styles["BodyText"]))
 
+    pdf_elements.append(Paragraph("Achivements", section_style))
+    for ach in achievements:
+        pdf_elements.append(Paragraph(ach, pdf_styles["BodyText"]))
+
     pdf_doc.build(pdf_elements)
     print(f"PDF resume saved as {pdf_filename}")
 
@@ -65,6 +69,10 @@ def generate_resume_files(name, email, phone, skills, experience, education, pdf
         odt_file.write("Education:\n")
         for edu in education:
             odt_file.write(f"- {edu}\n")
+
+        odt_file.write("Achievements:\n")
+        for ach in achievements:
+            odt_file.write(f"- {ach}\n")
 
     print(f"LibreOffice Writer resume saved as {odt_filename}")
 
@@ -101,7 +109,15 @@ if __name__ == "__main__":
             break
         education.append(edu)
 
+    achievements = []
+    print("Enter your achievements (press enter twice to stop):")
+    while True:
+        ach = input()
+        if not ach:
+            break
+        achievements.append(ach)
+
     pdf_filename = input("Enter the filename for the PDF resume (e.g., resume.pdf): ")
     odt_filename = input("Enter the filename for the LibreOffice Writer resume (e.g., resume.odt): ")
 
-    generate_resume_files(name, email, phone, skills, experience, education, pdf_filename, odt_filename)
+    generate_resume_files(name, email, phone, skills, experience, education, achievements, pdf_filename, odt_filename)
