@@ -46,6 +46,10 @@ def generate_resume_files(name, email, phone, skills, experience, education, ach
     pdf_elements.append(Paragraph("Achivements", section_style))
     for ach in achievements:
         pdf_elements.append(Paragraph(ach, pdf_styles["BodyText"]))
+		
+	pdf_elements.append(Paragraph("Projects", section_style))
+    for proj in projects:
+        pdf_elements.append(Paragraph(ach, pdf_styles["BodyText"]))
 
     pdf_doc.build(pdf_elements)
     print(f"PDF resume saved as {pdf_filename}")
@@ -73,7 +77,7 @@ def generate_resume_files(name, email, phone, skills, experience, education, ach
         odt_file.write("Achievements:\n")
         for ach in achievements:
             odt_file.write(f"- {ach}\n")
-        
+
 		odt_file.write("Projects:\n")
         for proj in projects:
             odt_file.write(f"- {proj}\n")
