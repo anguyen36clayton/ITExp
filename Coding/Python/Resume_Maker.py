@@ -4,7 +4,7 @@ from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.enums import TA_CENTER
 import subprocess
 
-def generate_resume_files(name, email, phone, skills, experience, education, achievements, pdf_filename, odt_filename):
+def generate_resume_files(name, email, phone, skills, experience, education, achievements, projects, pdf_filename, odt_filename):
     # PDF generation
     pdf_doc = SimpleDocTemplate(pdf_filename, pagesize=letter)
     pdf_elements = []
@@ -73,6 +73,10 @@ def generate_resume_files(name, email, phone, skills, experience, education, ach
         odt_file.write("Achievements:\n")
         for ach in achievements:
             odt_file.write(f"- {ach}\n")
+        
+		odt_file.write("Projects:\n")
+        for proj in projects:
+            odt_file.write(f"- {proj}\n")
 
     print(f"LibreOffice Writer resume saved as {odt_filename}")
 
@@ -116,8 +120,16 @@ if __name__ == "__main__":
         if not ach:
             break
         achievements.append(ach)
+		
+    projects = []
+    print("Enter your projects (press enter twice to stop):")
+    while True:
+        proj = input()
+        if not proj:
+            break
+        projects.append(ach)
 
     pdf_filename = input("Enter the filename for the PDF resume (e.g., resume.pdf): ")
     odt_filename = input("Enter the filename for the LibreOffice Writer resume (e.g., resume.odt): ")
 
-    generate_resume_files(name, email, phone, skills, experience, education, achievements, pdf_filename, odt_filename)
+    generate_resume_files(name, email, phone, skills, experience, education, achievements, projects, pdf_filename, odt_filename)
