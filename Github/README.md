@@ -1,8 +1,9 @@
-Github Commands:
+**Github Commands**
 
-**Legend**
+```
 $ - denotes a command
 # - denotes a comment
+```
 
 **How to Clone into PC**
 - Open the repository, click on <> Code, then copy the link in HTTPS.
