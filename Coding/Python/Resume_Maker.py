@@ -46,8 +46,8 @@ def generate_resume_files(name, email, phone, skills, experience, education, ach
     pdf_elements.append(Paragraph("Achivements", section_style))
     for ach in achievements:
         pdf_elements.append(Paragraph(ach, pdf_styles["BodyText"]))
-		
-	pdf_elements.append(Paragraph("Projects", section_style))
+
+    pdf_elements.append(Paragraph("Projects", section_style))
     for proj in projects:
         pdf_elements.append(Paragraph(proj, pdf_styles["BodyText"]))
 
@@ -73,14 +73,17 @@ def generate_resume_files(name, email, phone, skills, experience, education, ach
         odt_file.write("Education:\n")
         for edu in education:
             odt_file.write(f"- {edu}\n")
+        odt_file.write("\n")
 
         odt_file.write("Achievements:\n")
         for ach in achievements:
             odt_file.write(f"- {ach}\n")
+        odt_file.write("\n")
 
-		odt_file.write("Projects:\n")
+        odt_file.write("Projects:\n")
         for proj in projects:
             odt_file.write(f"- {proj}\n")
+        odt_file.write("\n")
 
     print(f"LibreOffice Writer resume saved as {odt_filename}")
 
@@ -124,14 +127,14 @@ if __name__ == "__main__":
         if not ach:
             break
         achievements.append(ach)
-		
+
     projects = []
     print("Enter your projects (press enter twice to stop):")
     while True:
         proj = input()
         if not proj:
             break
-        projects.append(ach)
+        projects.append(proj)
 
     pdf_filename = input("Enter the filename for the PDF resume (e.g., resume.pdf): ")
     odt_filename = input("Enter the filename for the LibreOffice Writer resume (e.g., resume.odt): ")
