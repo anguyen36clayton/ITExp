@@ -76,9 +76,9 @@ def generate_resume_files(name, email, phone, skills, experience, education, ach
 
     print(f"LibreOffice Writer resume saved as {odt_filename}")
 
-    # Open the generated files
-    subprocess.run(["xdg-open", pdf_filename])
-    subprocess.run(["xdg-open", odt_filename])
+    # Open the generated files, Only uncomment if you need it.
+    #subprocess.run(["xdg-open", pdf_filename])
+    #subprocess.run(["xdg-open", odt_filename])
 
 if __name__ == "__main__":
     name = input("Enter your full name: ")
