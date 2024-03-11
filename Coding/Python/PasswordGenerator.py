@@ -22,8 +22,11 @@ def check_password_strength(password):
     """Checks the strength of a password based on common criteria."""
 
     # Minimum length requirements
-    if len(password) < 8:
-        return "Password is too short. It should be at least 8 characters long."
+    length_grade = 0
+    if len(password) >= 8:
+        length_grade = 25
+    if len(password) >= 12:
+        length_grade = 50
 
     # Check for lowercase, uppercase, numbers, and symbols
     has_lower = re.search(r"[a-z]", password)
@@ -31,15 +34,10 @@ def check_password_strength(password):
     has_digit = re.search(r"\d", password)
     has_special = re.search(r"[!@#$%^&*()_+\-=[\]{};':\"\\|,.<>/?]", password)  # Updated pattern for special characters
 
-    if not has_lower or not has_upper or not has_digit or not has_special:
-        return "Password should contain a mix of lowercase, uppercase, numbers, and symbols."
+    count = sum(1 for check in [has_lower, has_upper, has_digit, has_special] if check)
+    grade = count * 25
 
-    # Check for common patterns (optional)
-    if re.search(r"[\w]{3,}\d+[\w]{3,}", password):  # Letters and numbers in sequence
-        return "Password might be too predictable. Avoid common patterns."
-
-    # Password meets strength requirements
-    return "Password is strong!"
+    return f"Password Grade: {grade + length_grade}%"
 
 while True:
     choice = input("Do you want to generate a random password? (yes/no): ")
@@ -56,4 +54,3 @@ while True:
         break
     else:
         print("Invalid input. Please enter 'yes' or 'no'.")
-

@@ -11,4 +11,5 @@ v0.08: Fixed whitespace, added spaces to .odt file.
 **Password Generator**
 ```
 v0.01: Password generator based on amount wanted and has a strength test.
+v0.05: Added grades to each of the 4 checks, upper, lower, digit, and special. Each is worth 25%.
 ```
