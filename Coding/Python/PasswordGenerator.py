@@ -24,18 +24,16 @@ def check_password_strength(password):
     # Minimum length requirements
     length_grade = 0
     if len(password) >= 8:
-        length_grade = 25
-    if len(password) >= 12:
-        length_grade = 50
+        length_grade = min(25, len(password) - 7)  # Maximum 25% for length
 
     # Check for lowercase, uppercase, numbers, and symbols
-    has_lower = re.search(r"[a-z]", password)
-    has_upper = re.search(r"[A-Z]", password)
-    has_digit = re.search(r"\d", password)
-    has_special = re.search(r"[!@#$%^&*()_+\-=[\]{};':\"\\|,.<>/?]", password)  # Updated pattern for special characters
+    has_lower = 1 if re.search(r"[a-z]", password) else 0
+    has_upper = 1 if re.search(r"[A-Z]", password) else 0
+    has_digit = 1 if re.search(r"\d", password) else 0
+    has_special = 1 if re.search(r"[!@#$%^&*()_+\-=[\]{};':\"\\|,.<>/?]", password) else 0  # Updated pattern for special characters
 
-    count = sum(1 for check in [has_lower, has_upper, has_digit, has_special] if check)
-    grade = count * 25
+    count = has_lower + has_upper + has_digit + has_special
+    grade = min(count * 25, 100)  # Maximum 100%
 
     return f"Password Grade: {grade + length_grade}%"
 
