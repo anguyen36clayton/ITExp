@@ -18,11 +18,15 @@ public class Calculator {
 		
 		// Check if num2 is not zero to avoid division by zero
         int division = num2 != 0 ? num1 / num2 : 0;
+		
+		// Check if num2 is not zero to avoid modulus by zero
+        int modulus = num2 != 0 ? num1 % num2 : 0;
 
         System.out.println("Addition: " + addition);
         System.out.println("Subtraction: " + subtraction);
 		System.out.println("Multiplication: " + multiplication);
 		System.out.println("Division: " + division);
+		System.out.println("Modulus: " + modulus);
         
         // Close the scanner to prevent resource leak
         scanner.close();
