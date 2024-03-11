@@ -22,11 +22,11 @@ public class Calculator {
 		// Check if num2 is not zero to avoid modulus by zero
         int modulus = num2 != 0 ? num1 % num2 : 0;
 
-        System.out.println("Addition: " + addition);
-        System.out.println("Subtraction: " + subtraction);
-		System.out.println("Multiplication: " + multiplication);
-		System.out.println("Division: " + division);
-		System.out.println("Modulus: " + modulus);
+        System.out.println("Addition: " + num1 + " + " + num2 + " = " + addition);
+        System.out.println("Subtraction: " + num1 + " - " + num2 + " = " + subtraction);
+		System.out.println("Multiplication: " + num1 + " * " + num2 + " = " + multiplication);
+		System.out.println("Division: " + num1 + " / " + num2 + " = " + division);
+		System.out.println("Modulus: " + num1 + " % " + num2 + " = " + modulus);
         
         // Close the scanner to prevent resource leak
         scanner.close();
