@@ -20,11 +20,7 @@ def generate_password():
 
 def check_password_strength(password):
     """Checks the strength of a password based on common criteria."""
-
-    # Minimum length requirements
-    length_grade = 0
-    if len(password) >= 8:
-        length_grade = min(25, len(password) - 7)  # Maximum 25% for length
+    grade = 0
 
     # Check for lowercase, uppercase, numbers, and symbols
     has_lower = 1 if re.search(r"[a-z]", password) else 0
@@ -32,10 +28,20 @@ def check_password_strength(password):
     has_digit = 1 if re.search(r"\d", password) else 0
     has_special = 1 if re.search(r"[!@#$%^&*()_+\-=[\]{};':\"\\|,.<>/?]", password) else 0  # Updated pattern for special characters
 
-    count = has_lower + has_upper + has_digit + has_special
-    grade = min(count * 25, 100)  # Maximum 100%
+    # Add 20% for each criterion
+    grade += has_lower * 20
+    grade += has_upper * 20
+    grade += has_digit * 20
+    grade += has_special * 20
 
-    return f"Password Grade: {grade + length_grade}%"
+    # Additional 20% if length >= 8
+    if len(password) >= 8:
+        grade += 20
+
+    # Ensure the grade doesn't exceed 100%
+    grade = min(grade, 100)
+
+    return f"Password Grade: {grade}%"
 
 while True:
     choice = input("Do you want to generate a random password? (yes/no): ")
