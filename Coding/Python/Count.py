@@ -32,11 +32,14 @@ filename = input("Enter the name of the text file to analyze: ")
 # Construct the full path to the file
 full_path = os.path.join(current_directory, filename)
 
-# Count the letters and print the result
+# Count the letters
 letter_count = count_letters_in_file(full_path)
 
+# Print the result
 if letter_count > 0:
    print(f"The text file '{filename}' contains {letter_count} letters.")
+else:
+   print("No letters found in the file.")
 
 # Keep the terminal open
 input("Press Enter to exit...")
