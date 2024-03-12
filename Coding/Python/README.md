@@ -1,20 +1,22 @@
-**Simple Resume Maker**
+**ResumeMaker**
 ```
-Status: Almost Finished
-
-Todo: Organize information
-
+Note: Creates a resume in both .pdf and .odt format based on questions.
+Status: Finished
 v0.001: Resume maker that creates both a .pdf and .odt file when done.
 v0.01: Contains name, email, phone, skills, experience, and education.
 v0.02: Added achievements.
 v0.04: Removed the automatic opening of generated files.
 v0.05: Added projects.
 v0.08: Fixed whitespace, added spaces to .odt file.
-
+v0.10: Organized information.
+v0.11: Fixed pdf creation error.
+v0.12: Fixed generation call error.
+v0.14: Fixed bugs where files would not print properly.
 ```
 
-**Password Generator**
+**PasswordGenerator**
 ```
+Note: Generates a password and grades them.
 Status: Finished
 v0.01: Password generator based on amount wanted and has a strength test.
 v0.05: Added grades to each of the 4 checks, upper, lower, digit, and special. Each is worth 25%.
@@ -24,8 +26,9 @@ v0.11: Added a length of 8 characters check.
 v0.12: Added new threshold for a total of 5 checks, where each is 20%.
 ```
 
-**Count Letters and Numbers**
+**Count**
 ```
+Note: Counts letters and numbers.
 Status: Finished
 v0.01: Created code to count letters.
 v0.04 Added function to ask the user to choose which file to search.
