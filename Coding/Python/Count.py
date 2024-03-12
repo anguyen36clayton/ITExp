@@ -29,3 +29,6 @@ letter_count = count_letters_in_file(filename)
 
 if letter_count > 0:
    print(f"The text file '{filename}' contains {letter_count} letters.")
+
+# Keep the terminal open
+input("Press Enter to exit...")
