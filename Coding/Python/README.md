@@ -1,7 +1,9 @@
 **ResumeMaker**
 ```
 Note: Creates a resume in both .pdf and .odt format based on questions.
+
 Status: Finished
+
 v0.001: Resume maker that creates both a .pdf and .odt file when done.
 v0.01: Contains name, email, phone, skills, experience, and education.
 v0.02: Added achievements.
@@ -17,7 +19,9 @@ v0.14: Fixed bugs where files would not print properly.
 **PasswordGenerator**
 ```
 Note: Generates a password and grades them.
+
 Status: Finished
+
 v0.01: Password generator based on amount wanted and has a strength test.
 v0.05: Added grades to each of the 4 checks, upper, lower, digit, and special. Each is worth 25%.
 v0.06: Fixed bug where one check could have duplicates and be more than 25%.
@@ -29,7 +33,9 @@ v0.12: Added new threshold for a total of 5 checks, where each is 20%.
 **Count**
 ```
 Note: Counts letters and numbers.
+
 Status: Finished
+
 v0.01: Created code to count letters.
 v0.04 Added function to ask the user to choose which file to search.
 v0.05 Keeps terminal opened.

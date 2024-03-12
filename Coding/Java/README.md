@@ -1,5 +1,7 @@
 **Simple Java Calculator**
 ```
+Note: Add/Subtract/Multiplication/Division/Modulus equations are accepted.
+
 Status: Finished
 
 v0.01: Added adding and subtracting.
