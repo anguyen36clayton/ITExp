@@ -1,4 +1,3 @@
-Count letter 
 def count_letters_in_file(filename):
    """Counts the number of letters in a text file, excluding spaces.
 
@@ -22,8 +21,8 @@ def count_letters_in_file(filename):
        print(f"Error: The file '{filename}' was not found.")
        return 0
 
-# Get the filename from the user
-filename = input("Enter the name of the text file: ")
+# Prompt the user to enter the name of the text file
+filename = input("Enter the name of the text file to analyze: ")
 
 # Count the letters and print the result
 letter_count = count_letters_in_file(filename)
