@@ -23,3 +23,8 @@ v0.10: Fixed bug where grades would be over 100% threshold.
 v0.11: Added a length of 8 characters check.
 v0.12: Added new threshold for a total of 5 checks, where each is 20%.
 ```
+
+**Count Letters and Numbers**
+```
+v0.01: Created code to count letters.
+```
