@@ -38,6 +38,8 @@ letter_count, number_count = count_letters_and_numbers_in_file(full_path)
 
 # Print the result
 print(f"The text file '{filename}' contains {letter_count} letters and {number_count} numbers.")
+total_count = letter_count + number_count
+print(f"The total number of letters and numbers is {total_count}.")
 
 # Keep the terminal open
 input("Press Enter to exit...")
