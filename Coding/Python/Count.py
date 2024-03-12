@@ -7,21 +7,22 @@ def count_letters_and_numbers_in_file(filename):
        filename (str): The name of the text file to analyze.
 
    Returns:
-       int: The total number of letters and numbers found in the file.
+       tuple: A tuple containing the count of letters and numbers found in the file.
    """
 
    try:
        with open(filename, 'r') as file:
            text = file.read()
 
-           # Count letters and numbers using a generator expression
-           letter_and_number_count = sum(char.isalnum() for char in text)
+           # Count letters and numbers using generator expressions
+           letter_count = sum(char.isalpha() for char in text)
+           number_count = sum(char.isdigit() for char in text)
 
-           return letter_and_number_count
+           return letter_count, number_count
 
    except FileNotFoundError:
        print(f"Error: The file '{filename}' was not found.")
-       return 0
+       return 0, 0
 
 # Get the current working directory
 current_directory = os.getcwd()
@@ -33,13 +34,10 @@ filename = input("Enter the name of the text file to analyze: ")
 full_path = os.path.join(current_directory, filename)
 
 # Count the letters and numbers
-count = count_letters_and_numbers_in_file(full_path)
+letter_count, number_count = count_letters_and_numbers_in_file(full_path)
 
 # Print the result
-if count > 0:
-   print(f"The text file '{filename}' contains {count} letters and numbers.")
-else:
-   print("No letters or numbers found in the file.")
+print(f"The text file '{filename}' contains {letter_count} letters and {number_count} numbers.")
 
 # Keep the terminal open
 input("Press Enter to exit...")
