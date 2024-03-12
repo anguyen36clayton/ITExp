@@ -4,7 +4,7 @@ from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.enums import TA_CENTER
 import subprocess
 
-def generate_resume_files(name, email, phone, skills, experience, education, achievements, projects, pdf_filename, odt_filename):
+def generate_resume_files(name, email, phone, education, achievements, skills, projects, experience, pdf_filename, odt_filename):
     # PDF generation
     pdf_doc = SimpleDocTemplate(pdf_filename, pagesize=letter)
     pdf_elements = []
@@ -60,29 +60,29 @@ def generate_resume_files(name, email, phone, skills, experience, education, ach
         odt_file.write(f"Email: {email}\n")
         odt_file.write(f"Phone: {phone}\n\n")
 
+        odt_file.write("Education:\n")
+        for edu in education:
+            odt_file.write(f"- {edu}\n")
+        odt_file.write("\n")
+		
+        odt_file.write("Achievements:\n")
+        for ach in achievements:
+            odt_file.write(f"- {ach}\n")
+        odt_file.write("\n")
+		
         odt_file.write("Skills:\n")
         for skill in skills:
             odt_file.write(f"- {skill}\n")
         odt_file.write("\n")
 
-        odt_file.write("Experience:\n")
-        for exp in experience:
-            odt_file.write(f"- {exp}\n")
-        odt_file.write("\n")
-
-        odt_file.write("Education:\n")
-        for edu in education:
-            odt_file.write(f"- {edu}\n")
-        odt_file.write("\n")
-
-        odt_file.write("Achievements:\n")
-        for ach in achievements:
-            odt_file.write(f"- {ach}\n")
-        odt_file.write("\n")
-
         odt_file.write("Projects:\n")
         for proj in projects:
             odt_file.write(f"- {proj}\n")
+        odt_file.write("\n")
+		
+        odt_file.write("Experience:\n")
+        for exp in experience:
+            odt_file.write(f"- {exp}\n")
         odt_file.write("\n")
 
     print(f"LibreOffice Writer resume saved as {odt_filename}")
@@ -95,23 +95,7 @@ if __name__ == "__main__":
     name = input("Enter your full name: ")
     email = input("Enter your email address: ")
     phone = input("Enter your phone number: ")
-
-    skills = []
-    print("Enter your skills (press enter twice to stop):")
-    while True:
-        skill = input()
-        if not skill:
-            break
-        skills.append(skill)
-
-    experience = []
-    print("Enter your experience (press enter twice to stop):")
-    while True:
-        exp = input()
-        if not exp:
-            break
-        experience.append(exp)
-
+	
     education = []
     print("Enter your education (press enter twice to stop):")
     while True:
@@ -127,7 +111,15 @@ if __name__ == "__main__":
         if not ach:
             break
         achievements.append(ach)
-
+		
+    skills = []
+    print("Enter your skills (press enter twice to stop):")
+    while True:
+        skill = input()
+        if not skill:
+            break
+        skills.append(skill)
+		
     projects = []
     print("Enter your projects (press enter twice to stop):")
     while True:
@@ -136,7 +128,15 @@ if __name__ == "__main__":
             break
         projects.append(proj)
 
+    experience = []
+    print("Enter your experience (press enter twice to stop):")
+    while True:
+        exp = input()
+        if not exp:
+            break
+        experience.append(exp)
+
     pdf_filename = input("Enter the filename for the PDF resume (e.g., resume.pdf): ")
     odt_filename = input("Enter the filename for the LibreOffice Writer resume (e.g., resume.odt): ")
 
-    generate_resume_files(name, email, phone, skills, experience, education, achievements, projects, pdf_filename, odt_filename)
+    generate_resume_files(name, email, phone, achievements, skills, projects, experience, pdf_filename, odt_filename)
