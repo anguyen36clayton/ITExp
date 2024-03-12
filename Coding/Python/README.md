@@ -4,13 +4,13 @@ Status: Almost Finished
 
 Todo: Organize information
 
-
 v0.001: Resume maker that creates both a .pdf and .odt file when done.
 v0.01: Contains name, email, phone, skills, experience, and education.
 v0.02: Added achievements.
 v0.04: Removed the automatic opening of generated files.
 v0.05: Added projects.
 v0.08: Fixed whitespace, added spaces to .odt file.
+
 ```
 
 **Password Generator**
@@ -26,6 +26,7 @@ v0.12: Added new threshold for a total of 5 checks, where each is 20%.
 
 **Count Letters and Numbers**
 ```
+Status: Finished
 v0.01: Created code to count letters.
 v0.04 Added function to ask the user to choose which file to search.
 v0.05 Keeps terminal opened.
