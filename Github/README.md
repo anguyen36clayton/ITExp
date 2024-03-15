@@ -1,8 +1,15 @@
-**Github Commands**
+**Github Scripts and Commands**
 
 ```
 $ - denotes a command
 # - denotes a comment
+```
+
+**Login Github from git bash**
+```
+The account name is the account.
+The password is the PAT (Personal Access Token), not the account's password.
+
 ```
 
 **How to Clone into PC**
@@ -16,7 +23,7 @@ $git commit -m "Add comment here"
 $git push
 ```
 
-**Creating a new Branch and track it on the website**
+**Create a new Branch and track it on the website**
 ```
 $git checkout -b new_branch_name #Create a new branch
 $git checkout branch_name #Check out the branch
