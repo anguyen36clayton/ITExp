@@ -12,7 +12,8 @@ On Windows PC:
 5. Click the box to share the folder.
 6. Change the share name if needed, and number of simultaneous users too.
 7. Click on apply
-On Phone:
+
+On iPhone:
 8. On a phone, go to the files app
 9. Click on triple dot
 10. Click on connect to server
