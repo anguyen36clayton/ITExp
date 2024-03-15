@@ -25,5 +25,8 @@ $git branch --set-upstream-to=origin/main main #To push to main instead of new b
 ```
 
 **Files**
-1. cd into a directory then push and pull, and keep command prompt to remain opened after executing commands.
+```
+Git Pull: 
+1. CD into a specific directory and pull. Also keeps the command prompt opened after executing commands.
+```
 
