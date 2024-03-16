@@ -7,10 +7,11 @@
 2. UFW provides logging capabilities to track firewall activity, allowing users to monitor connections and detect potential security threats.
 ```
 
-```
-How to install ufw:
-$sudo apt install ufw
 
+**How to install ufw:**
+```
+$sudo apt install ufw
+```
 
 **Ways to allow specific ports:**
 ```
