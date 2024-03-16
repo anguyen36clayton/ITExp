@@ -42,17 +42,17 @@ Git Pull:
 ```
 markdown
 Center and Bold Text
-\```
+```
 <p align="center"><strong>Your Heading</strong></p>
-\```
+```
 
 Bold String
-\**Bold**
+**Bold**
 
 Code Block
-\``` 
+``` 
 Text Here
-\```
+```
 
 
 ```
