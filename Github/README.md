@@ -40,7 +40,6 @@ Git Pull:
 
 **Formatting README Files:**
 ````
-markdown
 Center and Bold Text
 ```
 <p align="center"><strong>Your Heading</strong></p>
@@ -53,6 +52,4 @@ Code Block
 ``` 
 Text Here
 ```
-
-
 ````
