@@ -1,1 +1,1 @@
-**NMap is a powerful tool to look at the network.**
+**NMap is a powerful tool to analyze the network.**

@@ -11,6 +11,7 @@
 - $sudo: Admin mode
 - $sudo apt update: Update packages
 - $mkdir: Make directory
+- $./Shell_Script: Run shell script, may need to chmod 755 to give it execute permissions.
 
 **System and Service Manager**
 $ sudo systemctl start # Immediately begins service
@@ -29,6 +30,6 @@ Make directories/files without the lock:
 sudo chown -R $USER:$USER ~
 
 **Chmod Command**
-(Write later)
+(Write later) - write all permissions
 $chmod 755 #Usually used to execute programs
 
