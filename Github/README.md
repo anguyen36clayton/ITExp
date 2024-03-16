@@ -1,5 +1,6 @@
-**Github Scripts and Commands**
+<p align="center"><strong>Github Scripts and Commands</strong></p>
 
+**Legend:**
 ```
 $ - denotes a command
 # - denotes a comment
@@ -37,3 +38,21 @@ Git Pull:
 1. CD into a specific directory and pull. Also keeps the command prompt opened after executing commands.
 ```
 
+**Formatting README Files:**
+```
+markdown
+Center and Bold Text
+\```
+<p align="center"><strong>Your Heading</strong></p>
+\```
+
+Bold String
+\**Bold**
+
+Code Block
+\``` 
+Text Here
+\```
+
+
+```
