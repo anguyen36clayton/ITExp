@@ -3,7 +3,7 @@ import subprocess
 import shutil
 
 def convert_odt_to_pdf(input_file, output_folder):
-    output_file = os.path.splitext(input_file)[0] + ".pdf"
+    output_file = os.path.splitext(os.path.basename(input_file))[0] + ".pdf"
     output_path = os.path.join(output_folder, output_file)
     try:
         subprocess.run(["unoconv", "-f", "pdf", "-o", output_folder, input_file])
