@@ -7,6 +7,10 @@ $sudo apt-get install python3
 ```
 
 ```
+Note: It can convert one or multiple ODT files into a pdf
+Note: It also keeps the ODT files and moves it into an ODT folder
+Note: The pdfs are created inside the current folder
+
 Status: Finished
 
 v0.01: Created python script to convert .odt file to .pdf
