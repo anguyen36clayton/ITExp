@@ -1,21 +1,18 @@
-from flask import Flask, render_template, request
+from flask import Flask, request, render_template
 import markdown2
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/static')
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/')
 def index():
-    markdown_content = ""
-    html_content = ""
+    return render_template('index.html')
 
+@app.route('/render', methods=['POST'])
+def render_markdown():
     if request.method == 'POST':
-        # Get Markdown content from form submission
-        markdown_content = request.form['markdown_content']
-
-        # Convert Markdown to HTML
-        html_content = markdown2.markdown(markdown_content)
-
-    return render_template('index2.html', markdown_content=markdown_content, html_content=html_content)
+        markdown_content = request.form.get('markdown_content', '')
+        html_content = markdown2.markdown(markdown_content, extras=["fenced-code-blocks"])
+        return html_content
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
