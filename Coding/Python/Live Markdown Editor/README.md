@@ -28,4 +28,13 @@ Open this URL in your web browser to see your Markdown content rendered as HTML.
 Additionally, the premade code is inside this folder and can run on any device within the network by using the IP:5000, where the IP is the IP of the device.
 ```
 
+```
+Status: Finished
+
+v0.01: Added files for markdown editor
+v0.02: Fixed bugs
+v0.03: Corrected usage of markup 
+v0.10: Added static folder for js query
+v0.22: Live editor mode enabled
+```
 
