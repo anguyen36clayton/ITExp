@@ -25,7 +25,7 @@ $attributes disk clear readonly #Remove the write protect
 $exit 
 ```
 
-**Find Files Command Script
+**Find Files Command Script**
 ```
 Note: Searches for files with extensions .MTS, .mov, and .mp4 
 Note: Sets the Desktop as the starting point, and outputs to a .txt file
