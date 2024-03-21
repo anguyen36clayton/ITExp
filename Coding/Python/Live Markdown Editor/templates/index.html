@@ -1,19 +1,28 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Markdown Previewer</title>
+    <title>Live Markdown Editor</title>
+    <script src="/static/js/jquery-3.5.1.min.js"></script>
 </head>
 <body>
-    <h1>Markdown Previewer</h1>
-    <form action="/" method="post">
-        <textarea name="markdown_content" rows="10" cols="80">{{ markdown_content }}</textarea><br>
-        <input type="submit" value="Render Markdown">
-    </form>
-    <div>
-        {% if html_content %}
-            {{ html_content|safe }}
-        {% endif %}
-    </div>
+    <h1>Live Markdown Editor</h1>
+    <textarea id="markdown-content" rows="10" cols="80"></textarea><br>
+    <div id="html-content"></div>
+
+    <script>
+        $(document).ready(function() {
+            $('#markdown-content').on('input', function() {
+                var markdownContent = $(this).val();
+                $.ajax({
+                    type: "POST",
+                    url: "/render",
+                    data: { markdown_content: markdownContent },
+                    success: function(response) {
+                        $('#html-content').html(response);
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
