@@ -30,3 +30,8 @@ sudo ufw status
 ```
 sudo ufw delete <NumberID>
 ```
+
+**To reload UFW configuration**
+```
+sudo ufw reload
+```
