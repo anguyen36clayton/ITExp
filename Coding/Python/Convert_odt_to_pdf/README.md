@@ -11,6 +11,10 @@ Note: It can convert one or multiple ODT files into a pdf
 Note: It also keeps the ODT files and moves it into an ODT folder
 Note: The pdfs are created inside the current folder
 
+Note: The v2 creates usage of multiple processors for a 40% speed increase.
+Note: v2 Also supresses warning messages.
+Note: If it does not work as intended, use the sudo chmod 755 filename.py command on the file.
+
 Status: Finished
 
 v0.01: Created python script to convert .odt file to .pdf
@@ -24,4 +28,7 @@ v0.25: Moves ODT files to ODT folder and current file contains PDF files
 v0.32: Converts .odt file to .pdf using the original .odt name
 v0.41: Fixed indent bug
 v0.42: Fixed tab bugs when converting .pdfs
+
+v2.01: Added multiprocessor use
+v2.05: Removed warning messages
 ```
