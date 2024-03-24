@@ -20,3 +20,12 @@ On iPhone:
 11. Type in smb://IPHERE/Sharename #Where the IPHERE is the IPv4 Address from step 0a.
 12. The account and password information is the username of the current user of the pc and it's password.
 ```
+
+**Forgot Wi-Fi password**
+```
+Note: You must already be connected to that network
+
+1. Open command prompt in admin mode
+2. Type in netsh wlan show profile
+3. Type in netsh wlan show profile name= "Wi-Fi Name" key-clear
+```
