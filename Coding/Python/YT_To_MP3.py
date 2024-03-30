@@ -6,7 +6,8 @@ import concurrent.futures
 def download_youtube_video(url, output_path):
     yt = YouTube(url)
     stream = yt.streams.filter(only_audio=True).first()
-    downloaded_file_path = stream.download(output_path=output_path, filename='temp')
+    # Generate a unique filename based on video ID
+    downloaded_file_path = stream.download(output_path=output_path, filename=f'{yt.video_id}_temp')
     return downloaded_file_path, yt.title
 
 def convert_to_mp3(input_path, output_path):
