@@ -1,4 +1,3 @@
-
 import os
 from pytube import YouTube
 from moviepy.editor import VideoFileClip
@@ -6,7 +5,8 @@ from moviepy.editor import VideoFileClip
 def download_youtube_video(url, output_path):
     yt = YouTube(url)
     stream = yt.streams.filter(only_audio=True).first()
-    stream.download(output_path=output_path, filename='temp')
+    downloaded_file_path = stream.download(output_path=output_path, filename='temp')
+    return downloaded_file_path
 
 def convert_to_mp3(input_path, output_path):
     video = VideoFileClip(input_path)
@@ -26,12 +26,11 @@ def main():
     for url in urls:
         try:
             print(f"Downloading {url}")
-            download_youtube_video(url, output_directory)
-            input_file_path = os.path.join(output_directory, 'temp.mp4')
+            temp_file_path = download_youtube_video(url, output_directory)
             output_file_path = os.path.join(output_directory, f'{url.split("=")[-1]}.mp3')
-            print(f"Converting {input_file_path} to {output_file_path}")
-            convert_to_mp3(input_file_path, output_file_path)
-            os.remove(input_file_path)
+            print(f"Converting {temp_file_path} to {output_file_path}")
+            convert_to_mp3(temp_file_path, output_file_path)
+            os.remove(temp_file_path)
             print(f"Conversion completed: {output_file_path}")
         except Exception as e:
             print(f"Error processing {url}: {str(e)}")
