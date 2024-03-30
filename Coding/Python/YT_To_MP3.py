@@ -1,17 +1,22 @@
 import os
-from pytube import YouTube
+import youtube_dl
 from moviepy.editor import VideoFileClip
 
 def download_youtube_video(url, output_path):
-    yt = YouTube(url)
-    stream = yt.streams.filter(only_audio=True).first()
-    downloaded_file_path = stream.download(output_path=output_path, filename='temp')
-    return downloaded_file_path
+    ydl_opts = {
+        'format': 'bestaudio/best',
+        'outtmpl': os.path.join(output_path, 'temp.%(ext)s'),
+    }
+    with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+        ydl.download([url])
+    return os.path.join(output_path, 'temp.mp4')
 
 def convert_to_mp3(input_path, output_path):
     video = VideoFileClip(input_path)
     audio = video.audio
     audio.write_audiofile(output_path)
+    video.close()
+    audio.close()
 
 def main():
     urls = [
@@ -37,4 +42,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
