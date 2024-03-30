@@ -7,7 +7,7 @@ def download_youtube_video(url, output_path):
     yt = YouTube(url)
     stream = yt.streams.filter(only_audio=True).first()
     downloaded_file_path = stream.download(output_path=output_path, filename='temp')
-    return downloaded_file_path
+    return downloaded_file_path, yt.title
 
 def convert_to_mp3(input_path, output_path):
     audio = AudioSegment.from_file(input_path)
@@ -18,11 +18,13 @@ def convert_to_mp3(input_path, output_path):
 def process_url(url, output_directory):
     try:
         print(f"Downloading {url}")
-        temp_file_path = download_youtube_video(url, output_directory)
+        temp_file_path, video_title = download_youtube_video(url, output_directory)
         print(f"Converting {temp_file_path} to mp3")
         output_file_path = convert_to_mp3(temp_file_path, output_directory)
         os.remove(temp_file_path)
-        print(f"Conversion completed: {output_file_path}")
+        # Rename the MP3 file to the video title
+        os.rename(output_file_path, os.path.join(output_directory, f"{video_title}.mp3"))
+        print(f"Conversion completed: {os.path.join(output_directory, f'{video_title}.mp3')}")
     except Exception as e:
         print(f"Error processing {url}: {str(e)}")
 
