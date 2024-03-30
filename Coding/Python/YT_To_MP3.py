@@ -2,6 +2,13 @@ import os
 from pytube import YouTube
 from pydub import AudioSegment
 
+# Specify the path to the ffmpeg executable
+ffmpeg_path = '/path/to/ffmpeg'
+
+# Set the path to ffmpeg
+AudioSegment.converter = ffmpeg_path
+
+# Rest of the code remains the same
 def download_youtube_video(url, output_path):
     yt = YouTube(url)
     stream = yt.streams.filter(only_audio=True).first()
