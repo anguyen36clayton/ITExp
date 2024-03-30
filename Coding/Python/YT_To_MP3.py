@@ -31,9 +31,10 @@ def process_url(url, output_directory):
 
 def main():
     urls = [
-        "https://www.youtube.com/watch?v=dQw4w9WgXcQ",  # Example URL, you can add more
-        "https://www.youtube.com/watch?v=sbY9ALoe8Ew",  # Example URL, you can add more
-        # Add more URLs here if needed
+        "INSERT YOUTUBE LINK HERE",  # Example URL, you can add more
+        "INSERT YOUTUBE LINK HERE",  # Example URL, you can add more, delete this line if not needed
+        "INSERT YOUTUBE LINK HERE",  # Example URL, you can add more, delete this line if not needed
+        # Add more URLs like above if needed
     ]
     output_directory = "mp3_files"  # Relative path to the current working directory
 
