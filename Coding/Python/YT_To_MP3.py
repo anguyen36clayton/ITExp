@@ -6,14 +6,12 @@ import concurrent.futures
 def download_youtube_video(url, output_path):
     yt = YouTube(url)
     stream = yt.streams.filter(only_audio=True).first()
-    if not os.path.exists(output_path):
-        os.makedirs(output_path)
     downloaded_file_path = stream.download(output_path=output_path, filename='temp')
     return downloaded_file_path
 
 def convert_to_mp3(input_path, output_path):
     audio = AudioSegment.from_file(input_path)
-    output_file_path = output_path + ".mp3"
+    output_file_path = os.path.join(output_path, os.path.basename(input_path)) + ".mp3"
     audio.export(output_file_path, format="mp3")
     return output_file_path
 
@@ -22,7 +20,7 @@ def process_url(url, output_directory):
         print(f"Downloading {url}")
         temp_file_path = download_youtube_video(url, output_directory)
         print(f"Converting {temp_file_path} to mp3")
-        output_file_path = convert_to_mp3(temp_file_path, os.path.join(output_directory, url.split("=")[-1]))
+        output_file_path = convert_to_mp3(temp_file_path, output_directory)
         os.remove(temp_file_path)
         print(f"Conversion completed: {output_file_path}")
     except Exception as e:
@@ -36,14 +34,12 @@ def main():
     ]
     output_directory = "mp3_files"  # Relative path to the current working directory
 
-    # Get the current working directory
-    current_directory = os.getcwd()
-
-    # Construct the absolute path to the output directory
-    output_directory_path = os.path.join(current_directory, output_directory)
+    # Create the output directory if it does not exist
+    if not os.path.exists(output_directory):
+        os.makedirs(output_directory)
 
     with concurrent.futures.ThreadPoolExecutor() as executor:
-        executor.map(lambda url: process_url(url, output_directory_path), urls)
+        executor.map(lambda url: process_url(url, output_directory), urls)
 
 if __name__ == "__main__":
     main()
