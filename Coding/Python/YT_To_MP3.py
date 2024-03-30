@@ -36,8 +36,14 @@ def main():
     ]
     output_directory = "mp3_files"  # Relative path to the current working directory
 
+    # Get the current working directory
+    current_directory = os.getcwd()
+
+    # Construct the absolute path to the output directory
+    output_directory_path = os.path.join(current_directory, output_directory)
+
     with concurrent.futures.ThreadPoolExecutor() as executor:
-        executor.map(lambda url: process_url(url, output_directory), urls)
+        executor.map(lambda url: process_url(url, output_directory_path), urls)
 
 if __name__ == "__main__":
     main()
