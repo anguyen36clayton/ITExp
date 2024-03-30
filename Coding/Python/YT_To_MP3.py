@@ -1,14 +1,8 @@
 import os
 from pytube import YouTube
 from pydub import AudioSegment
+import concurrent.futures
 
-# Specify the path to the ffmpeg executable
-ffmpeg_path = '/usr/bin/ffmpeg'
-
-# Set the path to ffmpeg
-AudioSegment.converter = ffmpeg_path
-
-# Rest of the code remains the same
 def download_youtube_video(url, output_path):
     yt = YouTube(url)
     stream = yt.streams.filter(only_audio=True).first()
@@ -21,6 +15,17 @@ def convert_to_mp3(input_path, output_path):
     audio.export(output_file_path, format="mp3")
     return output_file_path
 
+def process_url(url):
+    try:
+        print(f"Downloading {url}")
+        temp_file_path = download_youtube_video(url, output_directory)
+        print(f"Converting {temp_file_path} to mp3")
+        output_file_path = convert_to_mp3(temp_file_path, os.path.join(output_directory, url.split("=")[-1]))
+        os.remove(temp_file_path)
+        print(f"Conversion completed: {output_file_path}")
+    except Exception as e:
+        print(f"Error processing {url}: {str(e)}")
+
 def main():
     urls = [
         "https://www.youtube.com/watch?v=dQw4w9WgXcQ",  # Example URL, you can add more
@@ -32,16 +37,8 @@ def main():
     if not os.path.exists(output_directory):
         os.makedirs(output_directory)
 
-    for url in urls:
-        try:
-            print(f"Downloading {url}")
-            temp_file_path = download_youtube_video(url, output_directory)
-            print(f"Converting {temp_file_path} to mp3")
-            output_file_path = convert_to_mp3(temp_file_path, os.path.join(output_directory, url.split("=")[-1]))
-            os.remove(temp_file_path)
-            print(f"Conversion completed: {output_file_path}")
-        except Exception as e:
-            print(f"Error processing {url}: {str(e)}")
+    with concurrent.futures.ThreadPoolExecutor() as executor:
+        executor.map(process_url, urls)
 
 if __name__ == "__main__":
     main()
