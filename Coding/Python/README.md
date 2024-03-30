@@ -54,5 +54,26 @@ pip3 install pytube
 pip3 install pydub
 sudo apt install ffmpeg
 
-v0.01: Created YT to MP3
+Status: Finished with 2 working versions
+
+v0.01: Created YT to MP3 Program
+v0.02: Fixed ouput path folder for temp
+v0.05: Fixed youtube download error and created youtube_dl import
+v0.09: Fixed youtube downloader url for video_id
+v0.15: Imported Youtube and AudioSegment as another approach
+v0.19: Added location for ffmpeg
+v0.20: Fixed ffmpeg location
+v0.32: Increased downloading speed by 40%
+v0.33: Fixed output file location
+v0.34: Fixed folder for output
+v0.35: Fixed temp path
+v0.36: Second attempt to fix temp
+v0.37: Third attempt to fix temp 
+v0.39: MP3 files are now named after their titles
+v0.40: Fixed temp file 
+v0.49: Removed test links
+
+v2.0: Created command line interface for youtube links instead of manually typing them in the python file
+Note: v2 has a loop for the user to keep typing in youtube links until they type done
+Note: All files will be downloaded once the user is done typing all their youtube links
 ```
