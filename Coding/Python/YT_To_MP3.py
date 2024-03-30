@@ -6,6 +6,8 @@ import concurrent.futures
 def download_youtube_video(url, output_path):
     yt = YouTube(url)
     stream = yt.streams.filter(only_audio=True).first()
+    if not os.path.exists(output_path):
+        os.makedirs(output_path)
     downloaded_file_path = stream.download(output_path=output_path, filename='temp')
     return downloaded_file_path
 
@@ -32,10 +34,7 @@ def main():
         "https://www.youtube.com/watch?v=sbY9ALoe8Ew",  # Example URL, you can add more
         # Add more URLs here if needed
     ]
-    output_directory = "mp3_files"
-
-    if not os.path.exists(output_directory):
-        os.makedirs(output_directory)
+    output_directory = "mp3_files"  # Relative path to the current working directory
 
     with concurrent.futures.ThreadPoolExecutor() as executor:
         executor.map(lambda url: process_url(url, output_directory), urls)
