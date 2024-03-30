@@ -3,7 +3,7 @@ from pytube import YouTube
 from pydub import AudioSegment
 
 # Specify the path to the ffmpeg executable
-ffmpeg_path = '/path/to/ffmpeg'
+ffmpeg_path = '/usr/bin/ffmpeg'
 
 # Set the path to ffmpeg
 AudioSegment.converter = ffmpeg_path
