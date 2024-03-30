@@ -45,3 +45,14 @@ v0.12 Added count for numbers.
 v0.13 Fixed counting numbers and letters logic.
 v0.16 Added a new line to display both letters and numbers amount.
 ```
+**Youtube to MP3**
+```
+Packages needed:
+sudo apt install python3
+sudo apt install python3-pip
+pip3 install pytube
+pip3 install pydub
+sudo apt install ffmpeg
+
+v0.01: Created YT to MP3
+```
