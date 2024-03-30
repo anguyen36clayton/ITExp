@@ -15,7 +15,7 @@ def convert_to_mp3(input_path, output_path):
     audio.export(output_file_path, format="mp3")
     return output_file_path
 
-def process_url(url):
+def process_url(url, output_directory):
     try:
         print(f"Downloading {url}")
         temp_file_path = download_youtube_video(url, output_directory)
@@ -38,7 +38,7 @@ def main():
         os.makedirs(output_directory)
 
     with concurrent.futures.ThreadPoolExecutor() as executor:
-        executor.map(process_url, urls)
+        executor.map(lambda url: process_url(url, output_directory), urls)
 
 if __name__ == "__main__":
     main()
