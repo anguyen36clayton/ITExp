@@ -19,33 +19,21 @@ tracert -troubleshoot
 
 **How to clear write protect on a drive**
 ```
-$diskpart #Check disks on device
-$select disk NUMHERE #Select which disk
-$attributes disk clear readonly #Remove the write protect
+$diskpart 
+$select disk NUMHERE 
+$attributes disk clear readonly 
 $exit 
 ```
 
-**Find Files Command Script**
+**findFiles.cmd**
 ```
 Note: Searches for files with extensions .MTS, .mov, and .mp4 
 Note: Sets the Desktop as the starting point, and outputs to a .txt file
 
-Example Output:
-Files with .MTS extension:
-G:\FilesHere\vidRecord\2012-11-18\00002.MTS
-G:\FilesHere\vidRecord\2012-11-18\000012.MTS
+Todo: Update file names
+```
 
-Files with .mov extension:
-G:\FilesHere\vidRecord\2016-01-12\00262.MTS
-G:\FilesHere\vidRecord\2014-02-22\00053.MTS
-
-Files with .mp4 extension:
-G:\FilesHere\vidRecord\2016-01-12\00267.MTS
-G:\FilesHere\vidRecord\2016-01-12\00268.MTS
-G:\FilesHere\vidRecord\2016-01-12\00269.MTS
-G:\FilesHere\vidRecord\2016-01-12\00270.MTS
-G:\FilesHere\vidRecord\2016-01-12\00271.MTS
-G:\FilesHere\vidRecord\2016-01-12\00272.MTS
-G:\FilesHere\vidRecord\2016-05-02\00319.MTS
-G:\FilesHere\vidRecord\2016-05-02\00320.MTS
+**moveFiles.bat**
+```
+Note: Moves all files inside sub folders to parent folder
 ```
