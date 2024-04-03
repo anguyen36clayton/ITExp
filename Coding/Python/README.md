@@ -1,4 +1,10 @@
 **ResumeMaker**
+
+```
+To run any python program, simply this the following in terminal:
+$python3 Program_Name.py
+```
+
 ```
 Note: Creates a resume in both .pdf and .odt format based on questions.
 
