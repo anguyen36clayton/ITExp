@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request, redirect, url_for
+from flask_socketio import SocketIO
 
 app = Flask(__name__)
+socketio = SocketIO(app)
 
 # This will store messages temporarily. In a real-world application, you'd use a database.
 messages = []
@@ -9,17 +11,12 @@ messages = []
 def index():
     return render_template('index.html', messages=messages)
 
-@app.route('/post_message', methods=['POST'])
-def post_message():
-    username = request.form['username']
-    message = request.form['message']
-    
-    # Check if both username and message are provided
-    if username.strip() == '' or message.strip() == '':
-        return redirect(url_for('index'))  # Redirect back to index without posting message
-    
+@socketio.on('message')
+def handle_message(data):
+    username = data['username']
+    message = data['message']
     messages.append({'username': username, 'message': message})
-    return redirect(url_for('index'))
+    socketio.emit('new_message', {'username': username, 'message': message}, broadcast=True)
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=6111)
+    socketio.run(app, debug=True, host='0.0.0.0', port=5000)
