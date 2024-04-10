@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Forum</title>
+</head>
+<body>
+    <h1>Chat Forum</h1>
+    <form id="message-form">
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" name="username"><br>
+        <label for="message">Message:</label><br>
+        <textarea id="message" name="message" rows="4" cols="50"></textarea><br>
+        <button type="submit">Send Message</button>
+    </form>
+    <hr>
+    <h2>Chat History</h2>
+    <ul id="message-list">
+        {% for msg in messages %}
+            <li><strong>{{ msg.username }}</strong>: {{ msg.message }}</li>
+        {% endfor %}
+    </ul>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.3/socket.io.js"></script>
+    <script>
+        var socket = io();
+
+        socket.on('connect', function() {
+            console.log('Connected to server');
+        });
+
+        socket.on('new_message', function(data) {
+            var messageList = document.getElementById('message-list');
+            var newMessage = document.createElement('li');
+            newMessage.innerHTML = '<strong>' + data.username + '</strong>: ' + data.message;
+            messageList.appendChild(newMessage);
+        });
+
+        document.getElementById('message-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var usernameInput = document.getElementById('username');
+            var messageInput = document.getElementById('message');
+            var username = usernameInput.value;
+            var message = messageInput.value;
+            if (username.trim() && message.trim()) {
+                socket.emit('message', {'username': username, 'message': message});
+                messageInput.value = '';
+            } else {
+                alert('Username and message cannot be empty');
+            }
+        });
+    </script>
+</body>
+</html>
