@@ -13,8 +13,13 @@ def index():
 def post_message():
     username = request.form['username']
     message = request.form['message']
+    
+    # Check if both username and message are provided
+    if username.strip() == '' or message.strip() == '':
+        return redirect(url_for('index'))  # Redirect back to index without posting message
+    
     messages.append({'username': username, 'message': message})
     return redirect(url_for('index'))
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    app.run(debug=True, host='0.0.0.0', port=6111)
