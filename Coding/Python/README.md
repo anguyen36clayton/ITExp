@@ -80,6 +80,7 @@ v0.40: Fixed temp file
 v0.49: Removed test links
 
 v2.0: Created command line interface for youtube links instead of manually typing them in the python file
+v2.03: Added a restriction to only youtube links
 Note: v2 has a loop for the user to keep typing in youtube links until they type done
 Note: All files will be downloaded once the user is done typing all their youtube links
 ```
