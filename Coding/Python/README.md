@@ -84,3 +84,14 @@ v2.03: Added a restriction to only youtube links
 Note: v2 has a loop for the user to keep typing in youtube links until they type done
 Note: All files will be downloaded once the user is done typing all their youtube links
 ```
+
+**Terminal_browser**
+```
+Note: Opens websites in the terminal
+
+Status: Finished
+
+v0.01: Opens websites using terminal
+v0.03: Added some aesthetics
+
+```
