@@ -30,22 +30,29 @@ def process_url(url, output_directory):
         print(f"Error processing {url}: {str(e)}")
 
 def main():
-    urls = [
-        "https://www.youtube.com/watch?v=KZfaxFmAdTI&ab_channel=Suboi",  # Example URL, you can add more
-        "https://www.youtube.com/watch?v=bA1MhSK8wBE&ab_channel=Ho%C3%A0ngTh%C3%B9yLinh",  # Example URL, you can add more, delete this line if not needed
-        "https://www.youtube.com/watch?v=i9_ZpPDtBCA&ab_channel=Superbrothers",  # Example URL, you can add more, delete this line if not needed
-        # Add more URLs like above if needed
-    ]
+    urls = []
+    more_links = True
+    while more_links:
+        link = input("Please enter a YouTube link (or type 'done' if you have no more links): ")
+        if link.lower() == "done":
+            more_links = False
+        else:
+            if "youtube.com" not in link:
+                print("Error: Not a valid YouTube link.")
+            else:
+                urls.append(link)
+    if not urls:
+        print("No valid YouTube links provided.")
+        return
+
     output_directory = "mp3_files"  # Relative path to the current working directory
 
     # Create the output directory if it does not exist
     if not os.path.exists(output_directory):
         os.makedirs(output_directory)
 
-    with concurrent.futures.ThreadPoolExecutor() as executor:
-        executor.map(lambda url: process_url(url, output_directory), urls)
+    for url in urls:
+        process_url(url, output_directory)
 
 if __name__ == "__main__":
     main()
-
-
